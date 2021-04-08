@@ -18,7 +18,7 @@ npm i @react-navigation/stack @react-navigation/native
 ### 구조  
 ![구조](https://user-images.githubusercontent.com/75245755/113990537-85a5a180-988c-11eb-826f-8e2544e12329.PNG)  
 
-
+</br></br>
 
 ### firebase 설정  
 처음에 ` npm i firebase ` 를 실행해준다.  
@@ -33,9 +33,11 @@ sdk 에서 키값 복사해서 프로젝트 firebase.json 파일을 만들어 �
 
 이제 데이터베이스를 만들어줍니다  
 사진처럼 왼쪽메뉴 두번쨰 태그로 들어가 데이터베이스를 생성합니다. 
-![데이터베이스](https://user-images.githubusercontent.com/75245755/113994662-8a6c5480-9890-11eb-9236-88ba174f998c.PNG)  
+![데이터베이스](https://user-images.githubusercontent.com/75245755/113994662-8a6c5480-9890-11eb-9236-88ba174f998c.PNG)
+</br></br>
 지역 설정인데 가까운곳으로 설정합니다.  
-![데베 지역](https://user-images.githubusercontent.com/75245755/113994805-a53ec900-9890-11eb-88aa-b95cf83d33bf.PNG)  
+![데베 지역](https://user-images.githubusercontent.com/75245755/113994805-a53ec900-9890-11eb-88aa-b95cf83d33bf.PNG) 
+</br></br>
 유틸 폴더를 만들어서 다음과 같이 작성해 설정을 마무리합니다.  
 ![유틸](https://user-images.githubusercontent.com/75245755/113995321-1b433000-9891-11eb-86af-ff1ebadf0685.PNG)
 
