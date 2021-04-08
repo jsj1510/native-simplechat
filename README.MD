@@ -24,13 +24,15 @@ npm i @react-navigation/stack @react-navigation/native
 처음에 ` npm i firebase ` 를 실행해준다.  
 https://console.firebase.google.com/  링크로 들어가서 기본 프로젝트 생성  
 설정으로 들어가 앱추가 버튼 클릭  
+</br></br>
 ![설정앱추가](https://user-images.githubusercontent.com/75245755/113993232-2e550080-988f-11eb-8bd2-3e6b1895ac40.PNG)  
+</br></br>
 sdk 에서 키값 복사해서 프로젝트 firebase.json 파일을 만들어 복붙  
 ![키](https://user-images.githubusercontent.com/75245755/113993395-66f4da00-988f-11eb-80eb-6a70a93e05f4.PNG)  
 
 왼족 메뉴탭에 auth 인증 탭으로 들어가 이메일/비밀번호 활성화
 ![이메일 비밀번호](https://user-images.githubusercontent.com/75245755/113993258-3745d200-988f-11eb-9eee-960749c4e0c9.PNG)  
-
+</br></br>
 이제 데이터베이스를 만들어줍니다  
 사진처럼 왼쪽메뉴 두번쨰 태그로 들어가 데이터베이스를 생성합니다. 
 ![데이터베이스](https://user-images.githubusercontent.com/75245755/113994662-8a6c5480-9890-11eb-9236-88ba174f998c.PNG)
