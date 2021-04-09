@@ -41,7 +41,14 @@ sdk 에서 키값 복사해서 프로젝트 firebase.json 파일을 만들어 �
 ![데베 지역](https://user-images.githubusercontent.com/75245755/113994805-a53ec900-9890-11eb-88aa-b95cf83d33bf.PNG) 
 </br></br>
 유틸 폴더를 만들어서 다음과 같이 작성해 설정을 마무리합니다.  
-![유틸](https://user-images.githubusercontent.com/75245755/113995321-1b433000-9891-11eb-86af-ff1ebadf0685.PNG)
+![유틸](https://user-images.githubusercontent.com/75245755/113995321-1b433000-9891-11eb-86af-ff1ebadf0685.PNG)  
+
+### 키보드 감추기  
+![키보드감추기](https://user-images.githubusercontent.com/75245755/114148552-dc76ae00-9954-11eb-939a-ccc275767ec8.PNG)  
+
+
+### 키보드 감추기 화면가림현상 해결  
+npm i react-native-keyboard-aware-scroll-view
 
 
 
