@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components/native';
-import { Image, Input } from '../components';
+import { Button, Image, Input } from '../components';
 import { images } from '../utils/images';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { validateEmail, removeWhitespace } from '../utils/common';
 
-const Container = styled.View`
+const Container = styled.SafeAreaView`
     flex: 1;
     justify-content: center;
     align-items: center;
@@ -26,8 +26,14 @@ function Login({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [disabled, setDisabled] = useState(true);
 
+    useEffect(() => {
+      setDisabled(!(email && password && !errorMessage));
+    }, [email, password, errorMessage]);
+    
     const passwordRef = useRef();
+
     const _handleEmailChage = email => {
             const changedEmail = removeWhitespace(email);
             setEmail(changedEmail);
@@ -40,7 +46,7 @@ function Login({ navigation }) {
         setPassword(removeWhitespace(password));
     };
 
-    
+    const _handleLoginButtonPress = () => {};
 
 
     return (
@@ -54,8 +60,7 @@ function Login({ navigation }) {
                     label="Email"
                     value={email}
                     onChangeText={_handleEmailChage}
-                    onChangeText={text => setEmail(text)}
-                    onSubmitEditing={() => passwordRef.current.focus()}
+                    onSubmitEditing={_handleLoginButtonPress}
                     placeholder="Email"
                     returnKeyType="next"
                 />
@@ -64,13 +69,22 @@ function Login({ navigation }) {
                     label="password"
                     value={password}
                     onChangeText={_handlePasswordChange}
-                    onChangeText={text => setPassword(text)}
                     onSubmitEditing={() => {}}
                     placeholder="Password"
                     returnKeyType="done"
                     isPassword
                 />
                 <ErrorText>{errorMessage}</ErrorText>
+                <Button
+                    title="Login"
+                    onPress={_handlePasswordChange}
+                    disabled={disabled}
+                />
+                <Button
+                    title="Sign up with email"
+                    onPress={() => navigation.navigate('Signup')}
+                    isFilled={false}
+                />
             </Container>
         </KeyboardAwareScrollView>
     )
