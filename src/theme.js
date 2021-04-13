@@ -7,7 +7,7 @@ const colors = {
     grey_1: '#a6a6a6',
     red: '#e84118',
     blue: '#3679fe',
-    idu: '#c4a48c'
+    idu: '#c4a48c',
   };
   
   export const theme = {
@@ -24,7 +24,9 @@ const colors = {
     buttonUnfilledTitle: colors.blue,
     headerTintColor: colors.black,
     imageButtonBackground: colors.grey_1,
-    imageButtonIcon: colors.white, 
+    imageButtonIcon: colors.white,
+    spinnerBackground: colors.black,
+    spinnerIndicator: colors.white,
   }
 
   

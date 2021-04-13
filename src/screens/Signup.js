@@ -4,6 +4,8 @@ import { Button, Image, Input } from '../components';
 import { images } from '../utils/images';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { validateEmail, removeWhitespace } from '../utils/common';
+import { Alert } from 'react-native';
+import { signup } from '../utils/firebase';
 
 const Container = styled.SafeAreaView`
     flex: 1;
@@ -62,7 +64,15 @@ function Signup() {
       
 
 
-    const _handleSignupButtonPress = () => {};
+    const _handleSignupButtonPress = async () => {
+        try {
+            const user = await signup({ email, password, name, photoUrl });
+            console.log(user);
+            Alert.alert("sign sucess", user.email);
+        } catch(e) {
+            Alert.alert('signup error', e.message);
+        }
+    };
 
 
     return (
@@ -70,7 +80,8 @@ function Signup() {
             extraScrollHeight={20}
         >
             <Container>
-                <Image rounded url={photoUrl} showButton />
+                <Image rounded url={photoUrl} showButton 
+                onChange={url => setPhotoUrl(url)} />
                 <Input
                     label="Name"
                     value={name}
@@ -104,8 +115,8 @@ function Signup() {
                 />
                 <Input
                     ref={passwordRef}
-                    label="password"
-                    value={password}
+                    label="passwordconfirm"
+                    value={passwordConfirm}
                     onChangeText={text => setPasswordConfirm(removeWhitespace(text))}
                     onSubmitEditing={_handleSignupButtonPress}
                     placeholder="Password"

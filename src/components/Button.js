@@ -1,5 +1,4 @@
-import React from 'react'
-import { TextPropTypes } from 'react-native';
+import React from 'react';
 import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 

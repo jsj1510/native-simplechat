@@ -1,9 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { ProgressContext } from '../contexts';
 import styled from 'styled-components/native';
 import { Button, Image, Input } from '../components';
 import { images } from '../utils/images';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { validateEmail, removeWhitespace } from '../utils/common';
+import { Alert } from 'react-native';
+import { login } from '../utils/firebase';
 
 const Container = styled.SafeAreaView`
     flex: 1;
@@ -33,6 +36,7 @@ function Login({ navigation }) {
     }, [email, password, errorMessage]);
     
     const passwordRef = useRef();
+    const { spinner } = useContext(ProgressContext);
 
     const _handleEmailChage = email => {
             const changedEmail = removeWhitespace(email);
@@ -46,7 +50,17 @@ function Login({ navigation }) {
         setPassword(removeWhitespace(password));
     };
 
-    const _handleLoginButtonPress = () => {};
+    const _handleLoginButtonPress = async () => {
+        try {
+            spinner.start();
+            const user = await login({ email, password });
+            Alert.alert('Login Success', user.email);
+        } catch (e) {
+            Alert.alert('Login Error', e.message);
+        } finally {
+            spinner.stop();
+        }
+    };
 
 
     return (
@@ -77,7 +91,7 @@ function Login({ navigation }) {
                 <ErrorText>{errorMessage}</ErrorText>
                 <Button
                     title="Login"
-                    onPress={_handlePasswordChange}
+                    onPress={_handleLoginButtonPress}
                     disabled={disabled}
                 />
                 <Button

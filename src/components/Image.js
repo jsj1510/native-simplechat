@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components/native';
 import { images } from '../utils/images';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Platform, Alert } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
 
 
 const Container = styled.View`
@@ -40,16 +43,53 @@ const PhotoButton = ({ onPress }) => {
 };
 
 const Image = ({ url, imageStyle, rounded, showButton }) => {
- 
+  useEffect(() => {
+    (async () => {
+      try {
+        if (Platform.OS === 'ios') {
+          const { status } = await Permissions.askAsync(
+            Permissions.CAMERA_ROLL
+          );
+          if (status !== 'granted') {
+            Alert.alert(
+              'Photo Permission',
+              'Please turn on the camera roll permissions.'
+            );
+          }
+        }
+      } catch (e) {
+        Alert.alert('Photo Permission Error', e.message);
+      }
+    })();
+  }, []);
+
+  const _handleEditButton = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 1,
+      });
+
+      if (!result.cancelled) {
+        onChangeImage(result.uri);
+      }
+    } catch (e) {
+      Alert.alert('Photo Error', e.message);
+    }
+  };
+
   return (
     <Container>
       <StyledImage source={{ uri: url }} style={imageStyle} rounded={rounded}/>
-      {showButton && <PhotoButton />}
+      {showButton && <PhotoButton onPress={_handleEditButton} />}
     </Container>
   );
 };
 
 images.defauldProps = {
+  onChangeImage: () => {},
   rounded: false,
   showButton: false,
 };
