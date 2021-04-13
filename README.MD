@@ -107,7 +107,11 @@ signup({email, password, name, photoUrl}) 을 추가해준다
 파이어베이스 rule에 사진추가  
 ![파이어베이스 사진추가](https://user-images.githubusercontent.com/75245755/114517089-f37d0f00-9c78-11eb-9ed2-d50fddce834f.PNG)  
 
+### 스피너 항시뜨지않게하기  
+![스피너 버튼로딩](https://user-images.githubusercontent.com/75245755/114535417-fe409f80-9c8a-11eb-9333-9552858b18c1.PNG)  
+
 ### 
+
 
 
 

@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { ProgressContext, ProgressProvider } from '../contexts';
 import styled from 'styled-components/native';
 import { Button, Image, Input } from '../components';
 import { images } from '../utils/images';
@@ -37,6 +38,7 @@ function Signup() {
     const emailRef = useRef();
     const passwordConfirmRef = useRef();
     const didMountRef = useRef();
+    const { spinner } = useContext(ProgressProvider);
 
     useEffect(() => {
         if(didMountRef.current) {
@@ -66,11 +68,14 @@ function Signup() {
 
     const _handleSignupButtonPress = async () => {
         try {
+            spinner.start();
             const user = await signup({ email, password, name, photoUrl });
             console.log(user);
             Alert.alert("sign sucess", user.email);
         } catch(e) {
             Alert.alert('signup error', e.message);
+        } finally {
+            spinner.stop();
         }
     };
 
