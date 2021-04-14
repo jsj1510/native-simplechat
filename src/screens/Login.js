@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { ProgressContext } from '../contexts';
+import { ProgressContext, UserContext } from '../contexts';
 import styled from 'styled-components/native';
 import { Button, Image, Input } from '../components';
 import { images } from '../utils/images';
@@ -31,12 +31,15 @@ function Login({ navigation }) {
     const [errorMessage, setErrorMessage] = useState('');
     const [disabled, setDisabled] = useState(true);
 
+
+
     useEffect(() => {
       setDisabled(!(email && password && !errorMessage));
     }, [email, password, errorMessage]);
     
     const passwordRef = useRef();
     const { spinner } = useContext(ProgressContext);
+    const { dispacth } = useContext(UserContext);
 
     const _handleEmailChage = email => {
             const changedEmail = removeWhitespace(email);
@@ -54,7 +57,7 @@ function Login({ navigation }) {
         try {
             spinner.start();
             const user = await login({ email, password });
-            Alert.alert('Login Success', user.email);
+            dispacth(user);
         } catch (e) {
             Alert.alert('Login Error', e.message);
         } finally {

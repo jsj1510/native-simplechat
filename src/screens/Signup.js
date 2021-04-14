@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { ProgressContext, ProgressProvider } from '../contexts';
+import { ProgressContext, UserContext } from '../contexts';
 import styled from 'styled-components/native';
 import { Button, Image, Input } from '../components';
 import { images } from '../utils/images';
@@ -38,7 +38,8 @@ function Signup() {
     const emailRef = useRef();
     const passwordConfirmRef = useRef();
     const didMountRef = useRef();
-    const { spinner } = useContext(ProgressProvider);
+    const { spinner } = useContext(ProgressContext);
+    const { dispatch } = useContext(UserContext);
 
     useEffect(() => {
         if(didMountRef.current) {
@@ -70,8 +71,7 @@ function Signup() {
         try {
             spinner.start();
             const user = await signup({ email, password, name, photoUrl });
-            console.log(user);
-            Alert.alert("sign sucess", user.email);
+            dispatch(user);
         } catch(e) {
             Alert.alert('signup error', e.message);
         } finally {
