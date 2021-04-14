@@ -16,7 +16,7 @@ const TabBarIcon = ({ focused, name }) => {
     />
   );
 };
-
+  
 const MainTab = ({ navigation, route }) => {
     const theme = useContext(ThemeContext);
   
