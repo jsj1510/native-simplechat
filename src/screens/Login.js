@@ -26,20 +26,20 @@ const ErrorText = styled.Text`
 `;
 
 function Login({ navigation }) {
+    const { spinner } = useContext(ProgressContext);
+    const { dispatch } = useContext(UserContext);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [disabled, setDisabled] = useState(true);
-
-
 
     useEffect(() => {
       setDisabled(!(email && password && !errorMessage));
     }, [email, password, errorMessage]);
     
     const passwordRef = useRef();
-    const { spinner } = useContext(ProgressContext);
-    const { dispacth } = useContext(UserContext);
+    
 
     const _handleEmailChage = email => {
             const changedEmail = removeWhitespace(email);
@@ -55,13 +55,13 @@ function Login({ navigation }) {
 
     const _handleLoginButtonPress = async () => {
         try {
-            spinner.start();
-            const user = await login({ email, password });
-            dispacth(user);
+          spinner.start();
+          const user = await login({ email, password });
+          dispatch(user);
         } catch (e) {
-            Alert.alert('Login Error', e.message);
+          Alert.alert('Login Error', e.message);
         } finally {
-            spinner.stop();
+          spinner.stop();
         }
     };
 

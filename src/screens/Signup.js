@@ -85,8 +85,11 @@ function Signup() {
             extraScrollHeight={20}
         >
             <Container>
-                <Image rounded url={photoUrl} showButton 
-                onChange={url => setPhotoUrl(url)} />
+                <Image 
+                    rounded 
+                    url={photoUrl} 
+                    showButton
+                    onChangeImage = {url => setPhotoUrl(url)} />
                 <Input
                     label="Name"
                     value={name}

@@ -110,7 +110,13 @@ signup({email, password, name, photoUrl}) 을 추가해준다
 ### 스피너 항시뜨지않게하기  
 ![스피너 버튼로딩](https://user-images.githubusercontent.com/75245755/114535417-fe409f80-9c8a-11eb-9333-9552858b18c1.PNG)  
 
-### 
+### 메인화면 탭네비게이션  
+npm i @react-navigation/bottom-tabs  
+
+### DB규칙 생성  
+![db규칙](https://user-images.githubusercontent.com/75245755/114681496-2e4e7800-9d49-11eb-9338-d7292935ed02.PNG)  
+
+
 
 
 

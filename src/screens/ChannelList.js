@@ -12,8 +12,8 @@ function ChannelList({ navigation }) {
         <Container>
             <Text style={{ fontSize:24 }}>Channel List</Text>
             <Button
-                title="chnnel creation"
-                onPress={() => navigation.navigate('Channel creation')}
+                title="Channel Creation"
+                onPress={() => navigation.navigate('Channel Creation')}
             />
         </Container>
     )

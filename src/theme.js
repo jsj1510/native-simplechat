@@ -27,6 +27,11 @@ const colors = {
     imageButtonIcon: colors.white,
     spinnerBackground: colors.black,
     spinnerIndicator: colors.white,
+    tabActiveColor: colors.blue,
+    tabInactiveColor: colors.grey_1,
+    buttonLogout: colors.red,
+    inputDisabledBackground: colors.grey_0,
+    
   }
 
   
